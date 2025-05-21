@@ -1,0 +1,30 @@
+.scrolling-container {
+    overflow: hidden;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+}
+
+.scrolling-track {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll-left 60s linear infinite;
+}
+
+.quote {
+    display: inline-block;
+    margin-right: 4rem;
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-style: italic;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "recharts": "^2.15.3",
+    "tabletop": "^1.6.2"
+  }
+}
