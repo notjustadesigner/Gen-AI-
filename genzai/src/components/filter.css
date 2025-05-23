@@ -4,11 +4,12 @@
     align-items: flex-start;
     justify-content: center;
     background-color: #0E0E0E;
-    padding: 2rem;
+    padding: 1rem;
     border: solid 1px #404040;
     border-radius: 1rem;
-    width: 27.5%;
+    width: 100%;
     gap: 1rem;
+    box-sizing: border-box;
 }
 
 .title {
@@ -20,6 +21,7 @@
     gap: 1rem;
     position: sticky;
     top: 65px;
+    width: 32.5%;
 }
 
 h1,
@@ -43,7 +45,7 @@ h3 {
     align-items: flex-start;
     justify-content: center;
     text-align: left;
-    width: 30%;
+    width: 100%;
     gap: 0.5rem;
     color: #404040;
 }

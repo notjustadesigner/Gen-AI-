@@ -26,7 +26,7 @@ function School({ data }) {
     })();
 
     return (
-        <div className='chart'>
+        <div className='chart2'>
             <div className='tag'>School</div>
             <ResponsiveContainer width="100%" height={250}>
                 <PieChart>

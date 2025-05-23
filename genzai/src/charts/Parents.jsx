@@ -26,7 +26,7 @@ function Parents({ data }) {
     })();
 
     return (
-        <div className='chart'>
+        <div className='chart2'>
             <div className='tag'>Parents</div>
             <ResponsiveContainer width="100%" height={250}>
                 <PieChart>

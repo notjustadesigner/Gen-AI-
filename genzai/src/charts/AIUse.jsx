@@ -26,7 +26,7 @@ function AIUse({ data }) {
     })();
 
     return (
-        <div className='chart'>
+        <div className='chart2'>
             <div className='tag'>AI Use Outside of School Context</div>
             <ResponsiveContainer width="100%" height={250}>
                 <PieChart>

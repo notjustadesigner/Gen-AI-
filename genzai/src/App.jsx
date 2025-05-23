@@ -56,49 +56,55 @@ function App() {
   }, [data, selectedCountry, selectedEducation]);
 
   return (
-    <div className='container'>
+    <>
       <TopBar />
-      <div className='hero'>
-        <h1>Generation[AI]</h1>
-        <h3>How do students use AI?</h3>
-        <h3>A new generation of students</h3>
-      </div>
-      <Filter
-        data={data}
-        selectedCountry={selectedCountry}
-        setSelectedCountry={setSelectedCountry}
-        selectedEducation={selectedEducation}
-        setSelectedEducation={setSelectedEducation}
-      />
-      <div className='graph'>
-        <AIUseLine data={filteredData} />
-        <AIToolBar data={filteredData} />
-      </div>
+      <div className='container'>
+        <div className='hero'>
+          <h1>Generation[AI]</h1>
+          <h3>How do students use AI?</h3>
+          <h3>A new generation of students</h3>
+        </div>
+        <div className='flex'>
 
-      <div className='graph'>
-        <Usage data={filteredData} />
-        <Helpfulness data={filteredData} />
+          <div className='graph'>
+            <AIUseLine data={filteredData} />
+            <Usage data={filteredData} />
+          </div>
+
+          <Filter
+            data={data}
+            selectedCountry={selectedCountry}
+            setSelectedCountry={setSelectedCountry}
+            selectedEducation={selectedEducation}
+            setSelectedEducation={setSelectedEducation}
+          />
+
+          <div className='graph'>
+            <AIToolBar data={filteredData} />
+            <Helpfulness data={filteredData} />
+          </div>
+        </div>
+        <div className='graph2'>
+          <School data={filteredData} />
+          <AIUse data={filteredData} />
+          <Parents data={filteredData} />
+
+        </div>
+
+        <Citations data={filteredData} />
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeaoR4krXg8eoVKQSw8QGF5dIlgkuyq-WHbeGhjkw-OB7YpbA/viewform?usp=dialog"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <button>Join the Research</button>
+        </a>
+
+        <p>
+          Total responses: {data.length} students!
+        </p>
       </div>
-      <div className='graph'>
-        <School data={filteredData} />
-        <AIUse data={filteredData} />
-        <Parents data={filteredData} />
-
-      </div>
-
-      <Citations data={filteredData} />
-      <a
-        href="https://docs.google.com/forms/d/e/1FAIpQLSeaoR4krXg8eoVKQSw8QGF5dIlgkuyq-WHbeGhjkw-OB7YpbA/viewform?usp=dialog"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <button>Join the Research</button>
-      </a>
-
-      <p>
-        Total responses: {data.length} students!
-      </p>
-    </div>
+    </>
   );
 }
 
