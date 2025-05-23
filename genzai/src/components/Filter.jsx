@@ -15,11 +15,13 @@ function Filter({ data, selectedCountry, setSelectedCountry, selectedEducation, 
 
     return (
         <div className='title'>
-            <h1>Gen[AI]</h1>
-            <h3>How do students use AI?</h3>
             <div className='filter'>
                 <div className='selector'>
-                    <label className='tag' htmlFor="countrySelect">Country: </label>
+                    <label className='tag' htmlFor="countrySelect">
+                        <img
+                            src="./sliders-horizontal.svg"
+                            style={{ width: "16px" }}
+                        />Country: </label>
                     <select
                         id="countrySelect"
                         value={selectedCountry}
@@ -32,7 +34,11 @@ function Filter({ data, selectedCountry, setSelectedCountry, selectedEducation, 
                 </div>
 
                 <div className='selector'>
-                    <label className='tag' htmlFor="educationSelect">Education Level: </label>
+                    <label className='tag' htmlFor="educationSelect">
+                        <img
+                            src="./sliders-horizontal.svg"
+                            style={{ width: "16px" }}
+                        />Education Level: </label>
                     <select
                         id="educationSelect"
                         value={selectedEducation}
@@ -43,6 +49,16 @@ function Filter({ data, selectedCountry, setSelectedCountry, selectedEducation, 
                         ))}
                     </select>
                 </div>
+            </div>
+            <div className='description'>
+                <img
+                    src="/square-mouse-pointer.svg"
+                    alt="Square and Mouse Pointer"
+                    style={{ width: "16px", marginTop: "4px" }}
+                />
+                <p>
+                    Scroll, Hover and use Filters to explore the data
+                </p>
             </div>
         </div>
     );

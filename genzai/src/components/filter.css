@@ -19,9 +19,7 @@
     border-radius: 1rem;
     gap: 1rem;
     position: sticky;
-    top: 50px;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    top: 65px;
 }
 
 h1,
@@ -37,4 +35,15 @@ h3 {
     align-items: space-between;
     justify-content: space-between;
     gap: 1rem;
+}
+
+.description {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    width: 30%;
+    gap: 0.5rem;
+    color: #404040;
 }

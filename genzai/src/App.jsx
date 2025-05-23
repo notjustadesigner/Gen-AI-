@@ -58,6 +58,11 @@ function App() {
   return (
     <div className='container'>
       <TopBar />
+      <div className='hero'>
+        <h1>Generation[AI]</h1>
+        <h3>How do students use AI?</h3>
+        <h3>A new generation of students</h3>
+      </div>
       <Filter
         data={data}
         selectedCountry={selectedCountry}
