@@ -43,8 +43,8 @@ function AIToolsBar({ data }) {
 
     return (
         <div className='chart'>
-            <div className='tag'>AI Tools Usage</div>
-            <ResponsiveContainer width="100%" height={300}>
+            <div className='tag'>Top AI Tools</div>
+            <ResponsiveContainer width="100%" height={400}>
                 <BarChart data={barData} margin={{ top: 20, right: 30, left: 20, bottom: 40 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke='#404040' />
                     <XAxis

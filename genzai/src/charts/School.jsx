@@ -20,14 +20,14 @@ function School({ data }) {
 
         // Ensure order: YES first, NO second
         return [
-            { name: "Yes", value: counts["Yes"] },
-            { name: "No", value: counts["No"] }
+            { name: "Legal", value: counts["Yes"] },
+            { name: "Illegal", value: counts["No"] }
         ];
     })();
 
     return (
         <div className='chart2'>
-            <div className='tag'>School</div>
+            <div className='tag'>School AI Policy</div>
             <ResponsiveContainer width="100%" height={250}>
                 <PieChart>
                     <Pie
@@ -43,7 +43,11 @@ function School({ data }) {
                             <Cell key={`cell-${index}`} fill={COLORS[index]} />
                         ))}
                     </Pie>
-                    <Tooltip contentStyle={{ background: "#222", color: "#CFCFCF", border: "1px solid #404040", borderRadius: "1rem" }} />
+                    <Tooltip
+                        contentStyle={{ background: "#222", color: "#CFCFCF", border: "1px solid #404040", borderRadius: "1rem" }}
+                        itemStyle={{ color: "#CFCFCF" }}
+                        labelStyle={{ color: "#CFCFCF" }}
+                    />
                 </PieChart>
             </ResponsiveContainer>
         </div>

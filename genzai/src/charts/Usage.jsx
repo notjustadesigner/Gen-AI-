@@ -64,8 +64,8 @@ function Usage({ data }) {
 
     return (
         <div className='chart' >
-            <div className='tag' style={{ color: "#CFCFCF" }}>Purposes for Using AI</div>
-            <ResponsiveContainer width="100%" height={350}>
+            <div className='tag' style={{ color: "#CFCFCF" }}>AI Usage Purpose</div>
+            <ResponsiveContainer width="100%" height={400}>
                 <BarChart
                     layout="vertical"
                     data={chartData}

@@ -20,21 +20,21 @@ function AIUse({ data }) {
 
         // Ensure order: YES first, NO second
         return [
-            { name: "Yes", value: counts["Yes"] },
-            { name: "No", value: counts["No"] }
+            { name: "Uses AI", value: counts["Yes"] },
+            { name: "Not uses AI", value: counts["No"] }
         ];
     })();
 
     return (
         <div className='chart2'>
-            <div className='tag'>AI Use Outside of School Context</div>
+            <div className='tag'>Students using AI</div>
             <ResponsiveContainer width="100%" height={250}>
                 <PieChart>
                     <Pie
                         style={{ border: "none" }}
                         data={aiOutsideSchoolData}
                         labelLine={false}
-                        label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                        label={({ name, percent }) => `${(percent * 100).toFixed(0)}% ${name}`}
                         outerRadius={80}
                         dataKey="value"
                     >
@@ -42,7 +42,11 @@ function AIUse({ data }) {
                             <Cell key={`cell-${index}`} fill={COLORS[index]} />
                         ))}
                     </Pie>
-                    <Tooltip contentStyle={{ background: "#222", color: "#CFCFCF", border: "1px solid #404040", borderRadius: "1rem" }} />
+                    <Tooltip
+                        contentStyle={{ background: "#222", color: "#CFCFCF", border: "1px solid #404040", borderRadius: "1rem" }}
+                        itemStyle={{ color: "#CFCFCF" }}
+                        labelStyle={{ color: "#CFCFCF" }}
+                    />
                 </PieChart>
             </ResponsiveContainer>
         </div >

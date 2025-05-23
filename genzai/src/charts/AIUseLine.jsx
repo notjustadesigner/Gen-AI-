@@ -78,13 +78,15 @@ function AIUseLine({ data }) {
     return (
         <div className='chart'>
             <div className='tag'>AI Usage per Month</div>
-            <ResponsiveContainer width="100%" height={275}>
+            <ResponsiveContainer width="100%" height={400}>
                 <AreaChart data={days}>
                     <CartesianGrid strokeDasharray="3 3" stroke='#404040' />
 
                     <YAxis allowDecimals={false} />
-                    <Tooltip contentStyle={{ background: "#222", color: "rgba(207, 207, 207, 1)", border: "1px solid #404040", borderRadius: "1rem" }} />
-                    <Legend />
+                    <Tooltip
+                        contentStyle={{ background: "#222", color: "rgba(207, 207, 207, 1)", border: "1px solid #404040", borderRadius: "1rem" }}
+                    />
+                    <Legend wrapperStyle={{ marginTop: "1rem" }} />
                     {sortedCategories.map(freq => (
                         <Area
                             key={freq}

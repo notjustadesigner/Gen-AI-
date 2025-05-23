@@ -54,7 +54,7 @@ function Helpfulness({ data }) {
 
     return (
         <div className='chart'>
-            <div className='tag'>Helpfulness vs Usage Frequency of AI Tools</div>
+            <div className='tag'>Top Use Cases</div>
             <ResponsiveContainer width="100%" height={400}>
                 <ScatterChart margin={{ top: 20, right: 30, bottom: 40, left: 40 }}>
                     <CartesianGrid stroke='#404040' />
@@ -65,7 +65,12 @@ function Helpfulness({ data }) {
                         <Label value="Average Helpfulness" angle={-90} offset={-10} position="center" />
                     </YAxis>
                     <ZAxis dataKey="size" range={[6, 100]} />
-                    <Tooltip cursor={{ strokeDasharray: '3 3' }} contentStyle={{ background: "#222", color: "#CFCFCF", border: "1px solid #404040", borderRadius: "1rem" }} />
+                    <Tooltip
+                        cursor={{ strokeDasharray: '3 3' }}
+                        contentStyle={{ background: "#222", color: "#CFCFCF", border: "1px solid #404040", borderRadius: "1rem" }}
+                        itemStyle={{ color: "#CFCFCF" }}
+                        labelStyle={{ color: "#CFCFCF" }}
+                    />
                     <Scatter name="AI Tasks" data={chartData} fill="#CFCFCF" />
                 </ScatterChart>
             </ResponsiveContainer>

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import './citations.css';
+import "../app.css";
+
 
 function Citations({ data }) {
     const [quotes, setQuotes] = useState([]);
@@ -26,15 +28,18 @@ function Citations({ data }) {
     }, [data]);
 
     return (
-        <div className="scrolling-container">
-            <div className="scrolling-track">
-                {[...quotes, ...quotes].map((quote, index) => (
-                    <div className="quote" key={index}>
-                        “{quote.trim()}”
-                    </div>
-                ))}
+        <>
+            <div className='tag'>Students are saying...</div>
+            <div className="scrolling-container">
+                <div className="scrolling-track">
+                    {[...quotes, ...quotes].map((quote, index) => (
+                        <div className="quote" key={index}>
+                            “{quote.trim()}”
+                        </div>
+                    ))}
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 

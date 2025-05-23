@@ -81,6 +81,7 @@ pre {
 
 .tag {
   display: flex;
+  width: fit-content;
   padding: 0.25rem 0.5rem;
   justify-content: center;
   align-items: center;
@@ -99,4 +100,42 @@ pre {
   align-items: flex-start;
   gap: 1rem;
   margin: 0.5rem;
+}
+
+select {
+  display: flex;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: solid 1px #404040;
+  background-color: #111;
+  color: #CFCFCF;
+  box-sizing: border-box;
+  cursor: pointer;
+  box-shadow: 0px 3px 10px 0px rgba(255, 255, 255, 0.05);
+  transition: box-shadow 0.2s ease-in;
+}
+
+select:hover,
+select:focus {
+  box-shadow: 0px 3px 15px 0px rgba(255, 255, 255, 0.10);
+}
+
+button {
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  border: solid 1px #404040;
+  background-color: #111;
+  color: #CFCFCF;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-sizing: border-box;
+  box-shadow: 0px 3px 10px 0px rgba(255, 255, 255, 0.05);
+  transition: box-shadow 0.2s ease-in;
+}
+
+button:hover,
+button:focus {
+  border: solid 1px #404040;
+  box-shadow: 0px 3px 15px 0px rgba(255, 255, 255, 0.10);
 }
