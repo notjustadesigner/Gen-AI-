@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import "./filter.css"
+import "../app.css"
 
 function Filter({ data, selectedCountry, setSelectedCountry, selectedEducation, setSelectedEducation }) {
     const countries = useMemo(() => {
@@ -17,8 +18,8 @@ function Filter({ data, selectedCountry, setSelectedCountry, selectedEducation, 
             <h1>Gen[AI]</h1>
             <h3>How do students use AI?</h3>
             <div className='filter'>
-                <div>
-                    <label htmlFor="countrySelect">🌍 Country: </label>
+                <div className='selector'>
+                    <label className='tag' htmlFor="countrySelect">Country: </label>
                     <select
                         id="countrySelect"
                         value={selectedCountry}
@@ -30,8 +31,8 @@ function Filter({ data, selectedCountry, setSelectedCountry, selectedEducation, 
                     </select>
                 </div>
 
-                <div>
-                    <label htmlFor="educationSelect">🎓 Education Level: </label>
+                <div className='selector'>
+                    <label className='tag' htmlFor="educationSelect">Education Level: </label>
                     <select
                         id="educationSelect"
                         value={selectedEducation}
