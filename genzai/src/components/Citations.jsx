@@ -34,7 +34,12 @@ function Citations({ data }) {
                 <div className="scrolling-track">
                     {[...quotes, ...quotes].map((quote, index) => (
                         <div className="quote" key={index}>
-                            “{quote.trim()}”
+                            <img
+                                src="/“.svg"
+                                alt="Quote mark"
+                                style={{ width: "1.5em", marginBottom: "0.3em", display: "block", marginLeft: "auto", marginRight: "auto" }}
+                            />
+                            {quote.trim()}
                         </div>
                     ))}
                 </div>

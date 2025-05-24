@@ -6,17 +6,29 @@
 }
 
 .scrolling-track {
-    display: inline-block;
+    display: flex;
     white-space: nowrap;
     animation: scroll-left 60s linear infinite;
 }
 
 .quote {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     margin-right: 4rem;
     font-size: 1.2rem;
     color: #ffffff;
     font-style: italic;
+    text-align: left;
+}
+
+.quote img {
+    display: block;
+    align-self: flex-start;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0;
 }
 
 @keyframes scroll-left {

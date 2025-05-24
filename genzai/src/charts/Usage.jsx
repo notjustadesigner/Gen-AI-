@@ -34,11 +34,11 @@ function Usage({ data }) {
         "Writing essays or text summaries",
         "Solving math / Science / Physics problems",
         "Doing my school assignments",
-        "Language practice (e.g. translations, grammar)",
-        "Studying / Memorising (e.g. Flashcards, Quizzes, Active Recall etc...)",
+        "Language practice",
+        "Studying / Memorising",
         "Coding / programming help",
         "Research / finding sources",
-        "Creative tasks (generating stories, art prompts)",
+        "Creative tasks",
         "Study planning / time management"
     ];
 
