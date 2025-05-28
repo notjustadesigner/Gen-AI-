@@ -136,11 +136,13 @@ function Citations({ data }) {
                 <strong style={{ fontWeight: 700 }}>Source:</strong>
               </span>
               <div style={{ marginTop: 4 }}>
-                <b>A</b>: Describe one, if any, specific way you used AI to help
-                with your learning.
+                Positive aspect: <br /> Describe one, if any, specific way you
+                used AI to help with your learning.
                 <br />
-                <b>B</b>: What concerns, if any, do you have about using AI for
-                your education?
+                Concern:
+                <br />
+                What concerns, if any, do you have about using AI for your
+                education?
               </div>
             </TooltipBox>
           </div>
