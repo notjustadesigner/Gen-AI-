@@ -9,10 +9,10 @@
 /* Mona Sans font for all other text */
 @font-face {
   font-family: "Mona Sans";
-  src: url("/Users/simonedemarchi/Desktop/genzai/genzai/public/MonaSans[slnt,wdth,wght].woff2")
-    format("woff2");
-  font-weight: normal;
-  font-style: normal;
+  src: url("/MonaSans[slnt,wdth,wght].woff2") format("woff2");
+  font-weight: 100 1000;
+  font-stretch: 75% 125%;
+  font-display: swap;
 }
 
 h1 {
