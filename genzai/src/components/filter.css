@@ -84,6 +84,11 @@ h3 {
     z-index: 9999999;
     justify-content: flex-end;
     align-items: flex-end;
+    pointer-events: none; /* Prevent .title from blocking interactions */
+  }
+  .title > .filter,
+  .title > .filter * {
+    pointer-events: auto; /* Allow interaction with filter controls */
   }
   .description {
     display: none;
