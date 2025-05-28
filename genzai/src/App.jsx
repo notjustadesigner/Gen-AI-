@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import "./app.css";
 import AIUse from "./charts/AIUse";
 import AIToolBar from "./charts/AIToolBar";
@@ -64,29 +65,40 @@ function App() {
     <>
       <TopBar />
       <div className="container">
-        <div className="hero">
+        <motion.div
+          className="hero"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
           <h1>Generation[AI]</h1>
           <h2>How do students use AI?</h2>
-        </div>
-        <div className="flex">
-          <div className="graph">
-            <AIUseLine data={filteredData} />
-            <Usage data={filteredData} />
-          </div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 1 }}
+        >
+          <div className="flex">
+            <div className="graph">
+              <AIUseLine data={filteredData} />
+              <Usage data={filteredData} />
+            </div>
 
-          <Filter
-            data={data}
-            selectedCountry={selectedCountry}
-            setSelectedCountry={setSelectedCountry}
-            selectedEducation={selectedEducation}
-            setSelectedEducation={setSelectedEducation}
-          />
+            <Filter
+              data={data}
+              selectedCountry={selectedCountry}
+              setSelectedCountry={setSelectedCountry}
+              selectedEducation={selectedEducation}
+              setSelectedEducation={setSelectedEducation}
+            />
 
-          <div className="graph">
-            <AIToolBar data={filteredData} />
-            <Helpfulness data={filteredData} />
+            <div className="graph">
+              <AIToolBar data={filteredData} />
+              <Helpfulness data={filteredData} />
+            </div>
           </div>
-        </div>
+        </motion.div>
         <div className="graph2">
           <School data={filteredData} />
           <AIUse data={filteredData} />
