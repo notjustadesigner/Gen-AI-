@@ -10,6 +10,9 @@
   width: 100%;
   gap: 1rem;
   box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .title {
@@ -48,4 +51,24 @@ h3 {
   width: 100%;
   gap: 0.5rem;
   color: #9e9e9e;
+}
+
+@media (max-width: 1180px) {
+  .title {
+    width: 95%;
+    left: 50%;
+    transform: translateX(-50%);
+    position: fixed;
+    bottom: 2%;
+    right: auto;
+    z-index: 9999999;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+  .description {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
 }
