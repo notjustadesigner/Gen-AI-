@@ -99,7 +99,19 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <button>Join the Research</button>
+          <button>
+            <img
+              src="/zap.svg"
+              alt="Source icon"
+              style={{
+                width: 18,
+                height: 18,
+                marginRight: 4,
+                marginBottom: 2,
+              }}
+            />
+            Join the Research
+          </button>
         </a>
 
         <p>Total responses: {data.length} students!</p>

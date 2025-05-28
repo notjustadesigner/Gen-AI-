@@ -1,21 +1,27 @@
 .scrolling-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 12rem;
+  padding-bottom: 12rem;
+  gap: 1rem;
 }
 
 .scrolling-track {
   display: flex;
-  animation: scroll-left 20s linear infinite;
+  animation: scroll-left 200s linear infinite;
 }
 
 .quote {
   font-family: "VoxelFont", monospace, sans-serif;
   display: flex;
+  gap: 1rem;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  margin-right: 4rem;
+  margin-right: 1rem;
   font-size: 1.2rem;
   color: #ffffff;
   font-style: italic;
@@ -23,6 +29,9 @@
   width: 300px;
   white-space: normal;
   flex: 0 0 auto;
+  border: solid 1px #404040;
+  border-radius: 1rem;
+  padding: 1rem;
 }
 
 .quote img {

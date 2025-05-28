@@ -28,7 +28,6 @@ function TooltipBox({
         pointerEvents: "none",
         minWidth,
         maxWidth,
-        margin,
       }}
     >
       {children}
