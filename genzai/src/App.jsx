@@ -1,15 +1,15 @@
-import { useEffect, useMemo, useState } from 'react';
-import './app.css';
-import AIUse from './charts/AIUse';
-import AIToolBar from './charts/AIToolBar';
-import AIUseLine from './charts/AIUseLine';
-import Usage from './charts/Usage';
-import Helpfulness from './charts/Helpfulness';
-import Parents from './charts/Parents';
-import School from './charts/School';
-import Filter from './components/Filter';
-import Citations from './components/Citations';
-import TopBar from './components/TopBar';
+import { useEffect, useMemo, useState } from "react";
+import "./app.css";
+import AIUse from "./charts/AIUse";
+import AIToolBar from "./charts/AIToolBar";
+import AIUseLine from "./charts/AIUseLine";
+import Usage from "./charts/Usage";
+import Helpfulness from "./charts/Helpfulness";
+import Parents from "./charts/Parents";
+import School from "./charts/School";
+import Filter from "./components/Filter";
+import Citations from "./components/Citations";
+import TopBar from "./components/TopBar";
 
 function App() {
   const [data, setData] = useState([]);
@@ -22,33 +22,38 @@ function App() {
         const response = await fetch(url);
         const text = await response.text();
 
-        const rows = text.trim().split('\n').map(row => row.split('\t'));
+        const rows = text
+          .trim()
+          .split("\n")
+          .map((row) => row.split("\t"));
         const headers = rows[0];
-        const jsonData = rows.slice(1).map(row =>
-          Object.fromEntries(row.map((val, i) => [headers[i], val]))
-        );
+        const jsonData = rows
+          .slice(1)
+          .map((row) =>
+            Object.fromEntries(row.map((val, i) => [headers[i], val]))
+          );
 
-        console.log('✅ Sheet data:', jsonData);
+        console.log("✅ Sheet data:", jsonData);
         setData(jsonData);
       } catch (error) {
-        console.error('❌ Error fetching sheet data:', error);
+        console.error("❌ Error fetching sheet data:", error);
       }
     };
 
     fetchData();
   }, []);
 
-  const [selectedCountry, setSelectedCountry] = useState('All');
-  const [selectedEducation, setSelectedEducation] = useState('All');
+  const [selectedCountry, setSelectedCountry] = useState("All");
+  const [selectedEducation, setSelectedEducation] = useState("All");
 
   const filteredData = useMemo(() => {
-    return data.filter(row => {
+    return data.filter((row) => {
       const countryMatch =
-        selectedCountry === 'All' ||
+        selectedCountry === "All" ||
         row["Country of residence"]?.trim() === selectedCountry;
 
       const educationMatch =
-        selectedEducation === 'All' ||
+        selectedEducation === "All" ||
         row["Current education level"]?.trim() === selectedEducation;
 
       return countryMatch && educationMatch;
@@ -58,15 +63,13 @@ function App() {
   return (
     <>
       <TopBar />
-      <div className='container'>
-        <div className='hero'>
+      <div className="container">
+        <div className="hero">
           <h1>Generation[AI]</h1>
-          <h3>How do students use AI?</h3>
-          <h3>A new generation of students</h3>
+          <h2>How do students use AI?</h2>
         </div>
-        <div className='flex'>
-
-          <div className='graph'>
+        <div className="flex">
+          <div className="graph">
             <AIUseLine data={filteredData} />
             <Usage data={filteredData} />
           </div>
@@ -79,16 +82,15 @@ function App() {
             setSelectedEducation={setSelectedEducation}
           />
 
-          <div className='graph'>
+          <div className="graph">
             <AIToolBar data={filteredData} />
             <Helpfulness data={filteredData} />
           </div>
         </div>
-        <div className='graph2'>
+        <div className="graph2">
           <School data={filteredData} />
           <AIUse data={filteredData} />
           <Parents data={filteredData} />
-
         </div>
 
         <Citations data={filteredData} />
@@ -100,9 +102,7 @@ function App() {
           <button>Join the Research</button>
         </a>
 
-        <p>
-          Total responses: {data.length} students!
-        </p>
+        <p>Total responses: {data.length} students!</p>
       </div>
     </>
   );
