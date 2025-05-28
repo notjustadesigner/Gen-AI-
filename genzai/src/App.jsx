@@ -10,7 +10,9 @@ import Parents from "./charts/Parents";
 import School from "./charts/School";
 import Filter from "./components/Filter";
 import Citations from "./components/Citations";
+
 import TopBar from "./components/TopBar";
+import Particles from "./components/Particles";
 
 function App() {
   const [data, setData] = useState([]);
@@ -67,12 +69,16 @@ function App() {
       <div className="container">
         <motion.div
           className="hero"
+          style={{ position: "relative", overflow: "hidden" }}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <h1>Generation[AI]</h1>
-          <h2>How do students use AI?</h2>
+          <Particles numParticles={48} color="#fff" style={{ zIndex: 0 }} />
+          <div style={{ position: "relative", zIndex: 1 }}>
+            <h1>Generation[AI]</h1>
+            <h2>How do students use AI?</h2>
+          </div>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 40 }}

@@ -172,7 +172,6 @@ function Citations({ data }) {
               <h3
                 className="tag"
                 style={{
-                  fontWeight: "bold",
                   fontFamily: "Mona Sans",
                 }}
               >
