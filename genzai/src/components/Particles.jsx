@@ -29,7 +29,7 @@ const Particles = ({ numParticles = 40, color = "#fff", style = {} }) => {
       ctx.clearRect(0, 0, width, height);
       for (const p of particles) {
         ctx.globalAlpha = p.alpha;
-        // Draw rounded square (50% border radius)
+
         ctx.save();
         ctx.beginPath();
         const size = p.r * 2;
