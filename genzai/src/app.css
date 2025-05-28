@@ -124,6 +124,11 @@ pre {
   font-weight: 500;
 }
 
+.tag-tooltip {
+  position: relative;
+  cursor: pointer;
+}
+
 .flex {
   display: flex;
   flex-direction: row;

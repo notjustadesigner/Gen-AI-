@@ -1,4 +1,6 @@
+import React, { useState } from "react";
 import "../app.css";
+import TooltipBox from "../components/TooltipBox";
 
 const COLORS = ["#CFCFCF", "#303030"]; // YES: #CFCFCF, NO: #303030
 
@@ -39,12 +41,49 @@ function AIUse({ data }) {
     </svg>
   );
 
+  // Tooltip state
+  const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0 });
+
+  const handleMouseEnter = (e) => {
+    setTooltip({
+      visible: true,
+      x: e.clientX,
+      y: e.clientY,
+    });
+  };
+  const handleMouseMove = (e) => {
+    setTooltip((t) => ({ ...t, x: e.clientX, y: e.clientY }));
+  };
+  const handleMouseLeave = () => {
+    setTooltip({ visible: false, x: 0, y: 0 });
+  };
+
   return (
     <div
       className="chart2"
       style={{ flexDirection: "column", alignItems: "flex-start" }}
     >
-      <div className="tag">Students using AI</div>
+      <div
+        className="tag tag-tooltip"
+        onMouseEnter={handleMouseEnter}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ position: "relative" }}
+      >
+        Students using AI
+        <TooltipBox visible={tooltip.visible} x={tooltip.x} y={tooltip.y}>
+          <span style={{ display: "flex", alignItems: "center", gap: 4 }}>
+            <img
+              src="/source.svg"
+              alt="Source icon"
+              style={{ width: 18, height: 18, marginRight: 4, marginBottom: 2 }}
+            />
+            <strong style={{ fontWeight: 700 }}>Source:</strong>
+          </span>
+          Do you ever use AI tools (ChatGPT or similar) for your learning
+          outside of a school context?
+        </TooltipBox>
+      </div>
       <div
         style={{
           display: "flex",
