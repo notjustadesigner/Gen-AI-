@@ -9,11 +9,11 @@ export default function Footer() {
           Privacy
         </a>
         <span className="footer-separator">|</span>
-        <a href="#" className="footer-link">
+        <a href="https://www.aalto.fi/en" className="footer-link">
           Aalto University
         </a>
         <span className="footer-separator">|</span>
-        <a href="#" className="footer-link">
+        <a href="https://www.flashka.ai/" className="footer-link">
           Flashka OÜ
         </a>
       </div>
