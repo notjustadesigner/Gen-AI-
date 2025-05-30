@@ -15,15 +15,26 @@ const Particles = ({ numParticles = 40, color = "#fff", style = {} }) => {
     canvas.height = height * dpr;
     ctx.scale(dpr, dpr);
 
+    // 8-bit grid size
+    const gridSize = 6;
+    const moveEveryNFrames = 10; // Slow down: move every N frames
+    let frame = 0;
+
     // Generate random particles
     const particles = Array.from({ length: numParticles }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      r: 1 + Math.random() * 2,
-      dx: (Math.random() - 0.5) * 0.5,
-      dy: (Math.random() - 0.5) * 0.5,
+      x: Math.floor((Math.random() * width) / gridSize) * gridSize,
+      y: Math.floor((Math.random() * height) / gridSize) * gridSize,
+      r: gridSize / 2,
+      dx: Math.random() < 0.5 ? -1 : 1,
+      dy: Math.random() < 0.5 ? -1 : 1,
       alpha: 0.5 + Math.random() * 0.5,
     }));
+
+    function randomDirection() {
+      // Returns -1, 0, or 1
+      const dirs = [-1, 0, 1];
+      return dirs[Math.floor(Math.random() * dirs.length)];
+    }
 
     function draw() {
       ctx.clearRect(0, 0, width, height);
@@ -32,25 +43,32 @@ const Particles = ({ numParticles = 40, color = "#fff", style = {} }) => {
 
         ctx.save();
         ctx.beginPath();
-        const size = p.r * 2;
-        const radius = size / 5; // 50% border radius
-        ctx.moveTo(p.x + radius, p.y);
-        ctx.arcTo(p.x + size, p.y, p.x + size, p.y + size, radius);
-        ctx.arcTo(p.x + size, p.y + size, p.x, p.y + size, radius);
-        ctx.arcTo(p.x, p.y + size, p.x, p.y, radius);
-        ctx.arcTo(p.x, p.y, p.x + size, p.y, radius);
-        ctx.closePath();
+        ctx.rect(p.x, p.y, gridSize, gridSize);
         ctx.fillStyle = color;
         ctx.fill();
         ctx.restore();
-        // Move
-        p.x += p.dx;
-        p.y += p.dy;
-        // Bounce
-        if (p.x < 0 || p.x > width) p.dx *= -1;
-        if (p.y < 0 || p.y > height) p.dy *= -1;
+
+        // Only move every N frames
+        if (frame % moveEveryNFrames === 0) {
+          // Occasionally change direction for random path
+          if (Math.random() < 0.2) {
+            p.dx = randomDirection() || p.dx;
+            p.dy = randomDirection() || p.dy;
+            // Prevent standing still
+            if (p.dx === 0 && p.dy === 0) p.dx = 1;
+          }
+          p.x += p.dx * gridSize;
+          p.y += p.dy * gridSize;
+          // Snap to grid
+          p.x = Math.round(p.x / gridSize) * gridSize;
+          p.y = Math.round(p.y / gridSize) * gridSize;
+          // Bounce
+          if (p.x < 0 || p.x > width - gridSize) p.dx *= -1;
+          if (p.y < 0 || p.y > height - gridSize) p.dy *= -1;
+        }
       }
       ctx.globalAlpha = 1;
+      frame++;
       animationId = requestAnimationFrame(draw);
     }
     draw();

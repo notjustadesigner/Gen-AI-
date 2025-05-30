@@ -89,6 +89,7 @@ function App() {
             <div className="graph">
               <AIUseLine data={filteredData} />
               <Usage data={filteredData} />
+              <AIUse data={filteredData} />
             </div>
 
             <Filter
@@ -102,14 +103,14 @@ function App() {
             <div className="graph">
               <AIToolBar data={filteredData} />
               <Helpfulness data={filteredData} />
+              <School data={filteredData} />
             </div>
           </div>
         </motion.div>
-        <div className="graph2">
-          <School data={filteredData} />
-          <AIUse data={filteredData} />
-          <Parents data={filteredData} />
-        </div>
+        {/* <div className="graph2">
+          
+         <Parents data={filteredData} /> 
+        </div> */}
 
         <Citations data={filteredData} />
         <a

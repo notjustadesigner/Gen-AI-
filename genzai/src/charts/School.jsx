@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import "../app.css";
 import TooltipBox from "../components/TooltipBox";
 
@@ -26,6 +25,12 @@ function School({ data }) {
     ];
   })();
 
+  // Calculate percentages for 100 icons
+  const total = aiOutsideSchoolData[0].value + aiOutsideSchoolData[1].value;
+  const legalCount =
+    total === 0 ? 0 : Math.round((aiOutsideSchoolData[0].value / total) * 100);
+  const illegalCount = 100 - legalCount;
+
   // Tooltip state
   const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0 });
 
@@ -43,8 +48,21 @@ function School({ data }) {
     setTooltip({ visible: false, x: 0, y: 0 });
   };
 
+  // Helper for coloring SVG icons using CSS filter (same as AIUse)
+  const getFilter = (color) => {
+    if (color === "#CFCFCF") {
+      // Legal (light)
+      return "invert(13%) sepia(0%) saturate(0%) hue-rotate(180deg) brightness(95%)";
+    }
+    // Illegal (dark)
+    return "invert(99%) sepia(1%) saturate(0%) hue-rotate(180deg) brightness(95%)";
+  };
+
   return (
-    <div className="chart2">
+    <div
+      className="chart"
+      style={{ flexDirection: "column", alignItems: "flex-start" }}
+    >
       <div
         className="tag tag-tooltip"
         onMouseEnter={handleMouseEnter}
@@ -65,35 +83,53 @@ function School({ data }) {
           Does your school officially allow the use of AI tools for assignments?
         </TooltipBox>
       </div>
-      <ResponsiveContainer width="100%" height={250}>
-        <PieChart>
-          <Pie
-            data={aiOutsideSchoolData}
-            cx="50%"
-            cy="50%"
-            labelLine={false}
-            label={({ name, percent }) =>
-              `${name}: ${(percent * 100).toFixed(0)}%`
-            }
-            outerRadius={80}
-            dataKey="value"
-          >
-            {aiOutsideSchoolData.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index]} />
-            ))}
-          </Pie>
-          <Tooltip
-            contentStyle={{
-              background: "#222",
-              color: "#CFCFCF",
-              border: "1px solid #404040",
-              borderRadius: "1rem",
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "0.2rem",
+          width: "100%",
+          minHeight: 140,
+          margin: "1rem 0",
+        }}
+      >
+        {Array.from({ length: 100 }).map((_, i) => (
+          <img
+            key={i}
+            src="/school.svg"
+            alt="School icon"
+            width={24}
+            height={24}
+            style={{
+              filter: getFilter(i < legalCount ? COLORS[0] : COLORS[1]),
+              display: "inline-block",
+              verticalAlign: "middle",
             }}
-            itemStyle={{ color: "#CFCFCF" }}
-            labelStyle={{ color: "#CFCFCF" }}
           />
-        </PieChart>
-      </ResponsiveContainer>
+        ))}
+      </div>
+      <div style={{ display: "flex", gap: "1rem", marginTop: "0.5rem" }}>
+        <span style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
+          <img
+            src="/school.svg"
+            alt="School icon"
+            width={20}
+            height={20}
+            style={{ filter: getFilter(COLORS[0]) }}
+          />
+          <span style={{ color: COLORS[0] }}>{legalCount}% Legal</span>
+        </span>
+        <span style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
+          <img
+            src="/school.svg"
+            alt="School icon"
+            width={20}
+            height={20}
+            style={{ filter: getFilter(COLORS[1]) }}
+          />
+          <span style={{ color: COLORS[1] }}>{illegalCount}% Illegal</span>
+        </span>
+      </div>
     </div>
   );
 }

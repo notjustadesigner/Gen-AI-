@@ -60,7 +60,7 @@ function AIUse({ data }) {
 
   return (
     <div
-      className="chart2"
+      className="chart"
       style={{ flexDirection: "column", alignItems: "flex-start" }}
     >
       <div
