@@ -24,42 +24,44 @@ function Filter({
   }, [data]);
 
   return (
-    <div className="title">
-      <div className="filter">
-        <div className="selector">
-          <label className="tag" htmlFor="countrySelect">
-            <img src="./sliders-horizontal.svg" style={{ width: "16px" }} />
-            Country:{" "}
-          </label>
-          <select
-            id="countrySelect"
-            value={selectedCountry}
-            onChange={(e) => setSelectedCountry(e.target.value)}
-          >
-            {countries.map((country) => (
-              <option key={country} value={country}>
-                {country}
-              </option>
-            ))}
-          </select>
-        </div>
+    <div className="filter-container">
+      <div className="title">
+        <div className="filter">
+          <div className="selector">
+            <label className="tag" htmlFor="countrySelect">
+              <img src="./sliders-horizontal.svg" style={{ width: "16px" }} />
+              Country:{" "}
+            </label>
+            <select
+              id="countrySelect"
+              value={selectedCountry}
+              onChange={(e) => setSelectedCountry(e.target.value)}
+            >
+              {countries.map((country) => (
+                <option key={country} value={country}>
+                  {country}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <div className="selector">
-          <label className="tag" htmlFor="educationSelect">
-            <img src="./sliders-horizontal.svg" style={{ width: "16px" }} />
-            Education Level:{" "}
-          </label>
-          <select
-            id="educationSelect"
-            value={selectedEducation}
-            onChange={(e) => setSelectedEducation(e.target.value)}
-          >
-            {educationLevels.map((level) => (
-              <option key={level} value={level}>
-                {level}
-              </option>
-            ))}
-          </select>
+          <div className="selector">
+            <label className="tag" htmlFor="educationSelect">
+              <img src="./sliders-horizontal.svg" style={{ width: "16px" }} />
+              Education Level:{" "}
+            </label>
+            <select
+              id="educationSelect"
+              value={selectedEducation}
+              onChange={(e) => setSelectedEducation(e.target.value)}
+            >
+              {educationLevels.map((level) => (
+                <option key={level} value={level}>
+                  {level}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
       <div className="description">
