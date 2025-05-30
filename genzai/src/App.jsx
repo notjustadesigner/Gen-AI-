@@ -113,30 +113,58 @@ function App() {
         </div> */}
 
         <Citations data={filteredData} />
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSeaoR4krXg8eoVKQSw8QGF5dIlgkuyq-WHbeGhjkw-OB7YpbA/viewform?usp=dialog"
-          target="_blank"
-          rel="noopener noreferrer"
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.5rem",
+            marginTop: "5rem",
+            marginBottom: "10rem",
+          }}
         >
-          <button>
-            <img
-              src="/zap.svg"
-              alt="Source icon"
-              style={{
-                width: 18,
-                height: 18,
-                marginRight: 4,
-                marginBottom: 2,
-              }}
-            />
-            Join the Research
-          </button>
-        </a>
-
-        <p>Total responses: {data.length} students!</p>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <h1>Rethink Education.</h1>
+            <h2>AI Is Evolving. Is School?</h2>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.5rem",
+            }}
+          >
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeaoR4krXg8eoVKQSw8QGF5dIlgkuyq-WHbeGhjkw-OB7YpbA/viewform?usp=dialog"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button>
+                <img
+                  src="/zap.svg"
+                  alt="Source icon"
+                  style={{
+                    width: 18,
+                    height: 18,
+                    marginRight: 4,
+                    marginBottom: 2,
+                  }}
+                />
+                Join the Research
+              </button>
+            </a>
+            <p>Total responses: {data.length} students!</p>
+          </div>
+        </div>
       </div>
+      <Footer />
     </>
   );
 }
 
+import Footer from "./components/Footer";
 export default App;

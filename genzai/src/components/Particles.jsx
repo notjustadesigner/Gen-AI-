@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 
 // Simple random particles effect using canvas
-const Particles = ({ numParticles = 40, color = "#fff", style = {} }) => {
+const Particles = ({ numParticles = 40, style = {} }) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const Particles = ({ numParticles = 40, color = "#fff", style = {} }) => {
 
     // 8-bit grid size
     const gridSize = 6;
-    const moveEveryNFrames = 10; // Slow down: move every N frames
+    const moveEveryNFrames = 15; // Slow down: move every N frames
     let frame = 0;
 
     // Generate random particles
@@ -36,6 +36,36 @@ const Particles = ({ numParticles = 40, color = "#fff", style = {} }) => {
       return dirs[Math.floor(Math.random() * dirs.length)];
     }
 
+    // Collision detection and response
+    function handleCollisions() {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i];
+          const b = particles[j];
+          // Check for overlap (AABB)
+          if (
+            a.x < b.x + gridSize &&
+            a.x + gridSize > b.x &&
+            a.y < b.y + gridSize &&
+            a.y + gridSize > b.y
+          ) {
+            // Simple collision response: swap directions
+            const tempDx = a.dx;
+            const tempDy = a.dy;
+            a.dx = b.dx;
+            a.dy = b.dy;
+            b.dx = tempDx;
+            b.dy = tempDy;
+            // Move them apart
+            a.x -= a.dx * gridSize;
+            a.y -= a.dy * gridSize;
+            b.x -= b.dx * gridSize;
+            b.y -= b.dy * gridSize;
+          }
+        }
+      }
+    }
+
     function draw() {
       ctx.clearRect(0, 0, width, height);
       for (const p of particles) {
@@ -43,8 +73,25 @@ const Particles = ({ numParticles = 40, color = "#fff", style = {} }) => {
 
         ctx.save();
         ctx.beginPath();
-        ctx.rect(p.x, p.y, gridSize, gridSize);
-        ctx.fillStyle = color;
+        // Draw rounded rectangle (border radius 2px)
+        const radius = 2;
+        ctx.moveTo(p.x + radius, p.y);
+        ctx.lineTo(p.x + gridSize - radius, p.y);
+        ctx.quadraticCurveTo(p.x + gridSize, p.y, p.x + gridSize, p.y + radius);
+        ctx.lineTo(p.x + gridSize, p.y + gridSize - radius);
+        ctx.quadraticCurveTo(
+          p.x + gridSize,
+          p.y + gridSize,
+          p.x + gridSize - radius,
+          p.y + gridSize
+        );
+        ctx.lineTo(p.x + radius, p.y + gridSize);
+        ctx.quadraticCurveTo(p.x, p.y + gridSize, p.x, p.y + gridSize - radius);
+        ctx.lineTo(p.x, p.y + radius);
+        ctx.quadraticCurveTo(p.x, p.y, p.x + radius, p.y);
+        ctx.closePath();
+
+        ctx.fillStyle = "#7F7F7F";
         ctx.fill();
         ctx.restore();
 
@@ -68,12 +115,15 @@ const Particles = ({ numParticles = 40, color = "#fff", style = {} }) => {
         }
       }
       ctx.globalAlpha = 1;
+      if (frame % moveEveryNFrames === 0) {
+        handleCollisions();
+      }
       frame++;
       animationId = requestAnimationFrame(draw);
     }
     draw();
     return () => cancelAnimationFrame(animationId);
-  }, [numParticles, color]);
+  }, [numParticles]);
 
   return (
     <canvas
