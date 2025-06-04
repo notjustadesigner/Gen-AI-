@@ -213,7 +213,8 @@ function Helpfulness({ data }) {
             data={chartData}
             fill="#CFCFCF"
             shape={renderCustomIcon}
-            isAnimationActive={false}
+            isAnimationActive={true}
+            animationDuration={700}
           />
         </ScatterChart>
       </ResponsiveContainer>
