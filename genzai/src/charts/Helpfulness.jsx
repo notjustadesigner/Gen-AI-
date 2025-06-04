@@ -18,7 +18,7 @@ function Helpfulness({ data }) {
   const categories = {
     "Writing essays or text summaries": "Writing",
     "Solving math / Science / Physics problems": "STEM",
-    "Doing my assignments": "Assignments",
+    "Doing my school assignments": "Assignments",
     "Language practice": "Language",
     "Studying / Memorising": "Studying",
     "Coding / programming help": "Coding",
